@@ -2,5 +2,5 @@
 
 ## Participantes 🚀
 
-_Juan Villagrán
-_Nicolás Fernandez
+* Juan Villagrán
+* Nicolás Fernandez
