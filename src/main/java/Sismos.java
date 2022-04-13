@@ -5,13 +5,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Sismos {
-    public static void main(String[] args) {
-        int reinicio = 0;
-        int dias = pedirDias();
-        double [][] matrizLlena = rellenarMatriz(dias);
-        int [] mayorQueCuatro = calcularMayorCuatro(matrizLlena, dias);
-        imprimirMayorCuatro(mayorQueCuatro);
-    }
 
     public static int pedirDias() {
         int dias;
