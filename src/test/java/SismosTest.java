@@ -18,15 +18,9 @@ class SismosTest {
         };
     }
 
-    @Test
-    public void Test() {
-        Sismos a = new Sismos();
-        double b = a.mayorsismo(arr);
-        assertEquals(b, 2.0);
-    }
 
     @Test
-    public void Test2() {
+    public void Test() {
         Sismos a = new Sismos();
         double b = a.mayorsismo(arr);
         assertEquals(b, 4.6);
