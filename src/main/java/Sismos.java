@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Sismos {
@@ -29,22 +30,25 @@ public class Sismos {
             System.out.println(a);
             switch (a) {
                 case "1":
-                    mostrarSismoIntenso(rellenarMatriz(pedirDias));
+                    double[][] z = rellenarMatriz(pedirDias());
+                    mostrarSismoIntenso(mayorsismo(z),mayorDia(z),mayorhora(z));
                     System.out.println("Sismo Intenso");
                     x=false;
                     break;
                 case "2":
-                    //sismosMayoresde4();
+                    //int [] mayorQueCuatro = calcularMayorCuatro(matrizLlena, dias);
+                    //imprimirMayorCuatro(mayorQueCuatro);
                     System.out.println("Sismos Mayores de 4");
                     x=false;
                     break;
                 case "3":
                     //reiniciarArreglos();
                     System.out.println("Reinicio");
-                    x=false;
+                   // reinicio = 1;
+                    x=true;
                     break;
                 case "4":
-                    //salir();
+                    salir();
                     System.out.println("Saliendo");
                     x= true;
                     break;
@@ -130,5 +134,41 @@ public class Sismos {
     public static void mostrarSismoIntenso(double mayor, int dia, int hora) {
         System.out.println("El sismo mas intenso es: "+mayor+" El dia "+dia+" a la hora de: "+hora);
     }
+    public static int pedirDias() {
+        int dias;
 
+        while(true) {
+            System.out.println("Por favor ingrese la cantidad de días");
+            Scanner scanner = new Scanner(System.in);
+
+            try {
+                dias = scanner.nextInt();
+            }catch(InputMismatchException e) {
+                continue;
+            }
+
+            if(dias > 1 && dias < 32) {
+                return dias;
+            }
+        }
+    }
+
+    public static double [][] rellenarMatriz(int dias) {
+        double [][] matrizRellena = new double[dias][24];
+        double gradoSismoSinTruncar;
+        double gradosSismosTruncados;
+
+
+        for(int i = 0; i < matrizRellena.length; i++) {
+            for(int j = 0; j < matrizRellena[i].length; j++ ) {
+                gradoSismoSinTruncar = (1 + (Math.random() * 8.6));
+                BigDecimal gradosSismo = new BigDecimal(gradoSismoSinTruncar);
+                BigDecimal rounded = gradosSismo.setScale(1, RoundingMode.FLOOR);
+                gradosSismosTruncados = rounded.doubleValue();
+                matrizRellena[i][j] = gradosSismosTruncados;
+                System.out.println(matrizRellena[i][j]);
+            }
+        }
+        return matrizRellena;
+    }
 }
