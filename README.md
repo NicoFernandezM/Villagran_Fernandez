@@ -1,4 +1,6 @@
 # Villagran_Fernandez
 
-##Juan Fernando Villagrán Olivera
-##Nicolás Antonio Fernández Millar
+## Participantes 🚀
+
+_Juan Villagrán
+_Nicolás Fernandez
