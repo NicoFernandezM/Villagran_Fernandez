@@ -1,11 +1,14 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.FormatFlagsConversionMismatchException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Sismos {
-    public static void main() {
-
+    public static void main(String[] args) {
+        int dias = pedirDias();
+        double [][] matrizLlena = rellenarMatriz(dias);
+        int [] mayorQueCuatro = calcularMayorCuatro(matrizLlena, dias);
     }
 
     public static int pedirDias() {
@@ -30,18 +33,39 @@ public class Sismos {
     public static double [][] rellenarMatriz(int dias) {
         double [][] matrizRellena = new double[dias][24];
         double gradoSismoSinTruncar;
+        double gradosSismosTruncados;
 
 
         for(int i = 0; i < matrizRellena.length; i++) {
             for(int j = 0; j < matrizRellena[i].length; j++ ) {
                 gradoSismoSinTruncar = (1 + (Math.random() * 8.6));
                 BigDecimal gradosSismo = new BigDecimal(gradoSismoSinTruncar);
-
-
+                BigDecimal rounded = gradosSismo.setScale(1, RoundingMode.FLOOR);
+                gradosSismosTruncados = rounded.doubleValue();
+                matrizRellena[i][j] = gradosSismosTruncados;
+                System.out.println(matrizRellena[i][j]);
             }
         }
         return matrizRellena;
     }
 
+    public static int [] calcularMayorCuatro(double [][] matrizRellena, int dias) {
+        int aux;
+        int vecesPorDia = 0;
+        int [] matrizMayorCuatro = new int [dias];
+
+        for(int i = 0; i < matrizRellena.length; i++) {
+            for(int j = 0; j < matrizRellena[i].length; j++ ) {
+                if(matrizRellena[i][j] >= 4.0) {
+                    vecesPorDia++;
+                }
+            }
+            matrizMayorCuatro[i] = vecesPorDia;
+            System.out.println(matrizMayorCuatro[i]);
+            vecesPorDia = 0;
+        }
+
+        return matrizMayorCuatro;
+    }
 
 }
