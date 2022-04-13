@@ -37,6 +37,7 @@ public class Sismos {
                 gradoSismoSinTruncar = (1 + (Math.random() * 8.6));
                 BigDecimal gradosSismo = new BigDecimal(gradoSismoSinTruncar);
 
+
             }
         }
         return matrizRellena;
