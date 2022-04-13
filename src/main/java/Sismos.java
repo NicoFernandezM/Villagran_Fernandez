@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public class Sismos {
     public static void main(String[] args) {
+        int reinicio = 0;
         int dias = pedirDias();
         double [][] matrizLlena = rellenarMatriz(dias);
         int [] mayorQueCuatro = calcularMayorCuatro(matrizLlena, dias);
+        imprimirMayorCuatro(mayorQueCuatro);
     }
 
     public static int pedirDias() {
@@ -66,6 +68,12 @@ public class Sismos {
         }
 
         return matrizMayorCuatro;
+    }
+
+    public static void imprimirMayorCuatro(int [] matrizMayorCuatro) {
+        for(int i = 0; i < matrizMayorCuatro.length; i++) {
+            System.out.println("Día " + (i + 1) + ": " + matrizMayorCuatro[i] + " veces.");
+        }
     }
 
 }
